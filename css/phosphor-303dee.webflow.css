@@ -133,6 +133,16 @@
   display: block;
 }
 
+/* Color logos: just grayscale (white bg + padding baked into image file) */
+.snapimage.color-logo {
+  filter: grayscale(100%);
+}
+
+/* Dark/black logos: lighten to match the gray tone of others */
+.snapimage.dark-logo {
+  filter: contrast(0.3) brightness(1.6);
+}
+
 .snaptext {
   text-align: center;
   padding-top: 10px;
