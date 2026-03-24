@@ -131,6 +131,9 @@
   margin-left: auto;
   margin-right: auto;
   display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
 
 /* Color logos: just grayscale (white bg + padding baked into image file) */
@@ -140,7 +143,7 @@
 
 /* Dark/black logos: lighten to match the gray tone of others */
 .snapimage.dark-logo {
-  filter: contrast(0.3) brightness(1.6);
+  filter: grayscale(100%) contrast(0.3) brightness(1.6);
 }
 
 .snaptext {
@@ -432,6 +435,9 @@
 .gridhover {
   transition: transform .2s;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .gridhover:hover {
