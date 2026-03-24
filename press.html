@@ -136,6 +136,12 @@
       align-items: center;
       gap: 6px;
     }
+    .pinned-label {
+      cursor: default;
+    }
+    .press-pinned {
+      margin-bottom: 40px;
+    }
     .press-section-label .chevron {
       display: inline-block;
       width: 8px;
@@ -225,6 +231,20 @@
 
         <!-- DEFAULT VIEW (grouped with toggles) -->
         <div id="default-view">
+          <!-- PINNED -->
+          <div class="press-section-label pinned-label">&#9734; Featured</div>
+          <ul class="press-list press-pinned">
+            <li class="press-item" data-type="Phosphor">
+              <a href="https://www.forbes.com/sites/dariashunina/2026/01/22/work-hard-play-hard-is-over-inside-silicon-valleys-996-culture/" target="_blank">
+                <div class="press-title">Work hard, play hard is over: inside Silicon Valley's 996 culture</div>
+                <div class="press-meta-line">
+                  <span class="press-date-source">Jan 22 · Forbes</span>
+                  <span class="press-pill phosphor" onclick="filterBy('Phosphor', event)">Phosphor</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+
           <div class="press-section-label open" onclick="this.classList.toggle('open')">Recent <span class="chevron"></span></div>
           <ul class="press-list press-recent">
             <li class="press-item" data-company="PointOne" data-batch="W24">
@@ -339,6 +359,15 @@
                 </div>
               </a>
             </li>
+            <li class="press-item" data-type="Phosphor">
+              <a href="https://www.youtube.com/watch?v=WW6gQzS3qT8" target="_blank">
+                <div class="press-title">Why ideas don't matter (according to a 2x YC founder turned investor)</div>
+                <div class="press-meta-line">
+                  <span class="press-date-source">Jan 8 · Talks With Dasha</span>
+                  <span class="press-pill phosphor" onclick="filterBy('Phosphor', event)">Phosphor</span>
+                </div>
+              </a>
+            </li>
             <li class="press-item" data-company="Corgi" data-batch="S24">
               <a href="https://www.axios.com/pro/fintech-deals/2026/01/08/startup-insurer-corgi-108-million-630-million-valuation" target="_blank">
                 <div class="press-title">Startup insurer Corgi raises $108 million at $630 million valuation</div>
@@ -346,6 +375,16 @@
                   <span class="press-date-source">Jan 8 · Axios</span>
                   <span class="press-pill" onclick="filterBy('Corgi', event)">Corgi</span>
                   <span class="press-pill" onclick="filterBy('S24', event)">S24</span>
+                </div>
+              </a>
+            </li>
+            <li class="press-item" data-company="Unusual" data-batch="F24">
+              <a href="https://martechseries.com/predictive-ai/ai-platforms-machine-learning/unusual-raises-3-6m-round-as-first-company-to-help-brands-change-how-ai-talks-about-them/" target="_blank">
+                <div class="press-title">Unusual raises $3.6M round as first company to help brands change how AI talks about them</div>
+                <div class="press-meta-line">
+                  <span class="press-date-source">Jan 6 · MarTech Series</span>
+                  <span class="press-pill" onclick="filterBy('Unusual', event)">Unusual</span>
+                  <span class="press-pill" onclick="filterBy('F24', event)">F24</span>
                 </div>
               </a>
             </li>
@@ -362,6 +401,16 @@
                 <div class="press-meta-line">
                   <span class="press-date-source">Jul 22 · TechCrunch</span>
                   <span class="press-pill" onclick="filterBy('Delve', event)">Delve</span>
+                  <span class="press-pill" onclick="filterBy('W24', event)">W24</span>
+                </div>
+              </a>
+            </li>
+            <li class="press-item" data-company="Octolane" data-batch="W24">
+              <a href="https://www.forbes.com/sites/dariashunina/2025/04/14/yc-backed-octolane-raises-seed-to-build-the-next-ai-salesforce/" target="_blank">
+                <div class="press-title">YC-backed Octolane raises seed to build the next AI Salesforce</div>
+                <div class="press-meta-line">
+                  <span class="press-date-source">Apr 14 · Forbes</span>
+                  <span class="press-pill" onclick="filterBy('Octolane', event)">Octolane</span>
                   <span class="press-pill" onclick="filterBy('W24', event)">W24</span>
                 </div>
               </a>
