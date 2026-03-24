@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dig:*)",
+      "Bash(curl -I https://phosphorcap.com)",
+      "Bash(curl -I https://www.phosphorcap.com)",
+      "Bash(mkdir -p /Users/sarahbrooks/Desktop/KulveerWebsite/css /Users/sarahbrooks/Desktop/KulveerWebsite/images)",
+      "Bash(cp /Users/sarahbrooks/Downloads/CowanKulveer-9992.jpg /Users/sarahbrooks/Desktop/KulveerWebsite/images/kulveer.jpg)",
+      "Bash(cp /Users/sarahbrooks/Downloads/CowanKulveer-0028.jpg /Users/sarahbrooks/Desktop/KulveerWebsite/images/kulveer2.jpg)",
+      "WebFetch(domain:eladgil.com)",
+      "WebFetch(domain:patrickcollison.com)",
+      "WebFetch(domain:blog.samaltman.com)",
+      "WebFetch(domain:hunterwalk.com)",
+      "WebFetch(domain:semilshah.com)",
+      "WebFetch(domain:nav.al)",
+      "WebFetch(domain:a16z.com)",
+      "WebFetch(domain:keithrabois.com)",
+      "WebFetch(domain:feld.com)",
+      "WebFetch(domain:pmarca.substack.com)",
+      "WebFetch(domain:www.paulgraham.com)",
+      "WebFetch(domain:cdixon.org)",
+      "WebFetch(domain:avc.com)",
+      "WebFetch(domain:www.sethlevine.com)",
+      "WebFetch(domain:lsvp.com)",
+      "WebFetch(domain:www.khoslaventures.com)",
+      "WebFetch(domain:www.bhorowitz.com)",
+      "WebFetch(domain:bryce.vc)",
+      "WebFetch(domain:www.bothsidesofthetable.com)",
+      "WebFetch(domain:reactionwheel.net)"
+    ]
+  }
+}
