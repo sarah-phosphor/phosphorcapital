@@ -97,6 +97,9 @@
       background: rgba(255,255,255,0.22);
       border-color: rgba(255,255,255,0.35);
     }
+    .press-pill.phosphor {
+      opacity: 0.82;
+    }
     .filter-banner {
       display: flex;
       align-items: center;
@@ -263,7 +266,7 @@
           </ul>
 
           <div class="press-toggle" onclick="this.classList.toggle('open')">
-            <span class="press-toggle-label">February 2026</span>
+            <span class="press-toggle-label">Feb 26</span>
             <span class="press-toggle-chevron"></span>
           </div>
           <ul class="press-list press-collapsible">
@@ -280,10 +283,58 @@
           </ul>
 
           <div class="press-toggle" onclick="this.classList.toggle('open')">
-            <span class="press-toggle-label">January 2026</span>
+            <span class="press-toggle-label">Jan 26</span>
             <span class="press-toggle-chevron"></span>
           </div>
           <ul class="press-list press-collapsible">
+            <li class="press-item" data-company="Delve" data-batch="W24" data-type="Phosphor">
+              <a href="https://www.inc.com/ben-sherry/8-early-stage-ai-companies-to-watch-in-2026/91287125" target="_blank">
+                <div class="press-title">8 early-stage AI companies to watch in 2026</div>
+                <div class="press-meta-line">
+                  <span class="press-date-source">Jan 28 · Inc.</span>
+                  <span class="press-pill phosphor" onclick="filterBy('Phosphor', event)">Phosphor</span>
+                </div>
+              </a>
+            </li>
+            <li class="press-item" data-company="Risotto" data-batch="W24">
+              <a href="https://techcrunch.com/2026/01/27/risotto-raises-10m-seed-to-use-ai-to-make-ticketing-systems-easier-to-use/" target="_blank">
+                <div class="press-title">Risotto raises $10M seed to use AI to make ticketing systems easier to use</div>
+                <div class="press-meta-line">
+                  <span class="press-date-source">Jan 27 · TechCrunch</span>
+                  <span class="press-pill" onclick="filterBy('Risotto', event)">Risotto</span>
+                  <span class="press-pill" onclick="filterBy('W24', event)">W24</span>
+                </div>
+              </a>
+            </li>
+            <li class="press-item" data-type="Phosphor">
+              <a href="https://www.forbes.com/sites/dariashunina/2026/01/22/work-hard-play-hard-is-over-inside-silicon-valleys-996-culture/" target="_blank">
+                <div class="press-title">Work hard, play hard is over: inside Silicon Valley's 996 culture</div>
+                <div class="press-meta-line">
+                  <span class="press-date-source">Jan 22 · Forbes</span>
+                  <span class="press-pill phosphor" onclick="filterBy('Phosphor', event)">Phosphor</span>
+                </div>
+              </a>
+            </li>
+            <li class="press-item" data-company="Bucket Robotics" data-batch="S24">
+              <a href="https://techcrunch.com/2026/01/18/how-yc-backed-bucket-robotics-survived-its-first-ces/" target="_blank">
+                <div class="press-title">How YC-backed Bucket Robotics survived its first CES</div>
+                <div class="press-meta-line">
+                  <span class="press-date-source">Jan 18 · TechCrunch</span>
+                  <span class="press-pill" onclick="filterBy('Bucket Robotics', event)">Bucket Robotics</span>
+                  <span class="press-pill" onclick="filterBy('S24', event)">S24</span>
+                </div>
+              </a>
+            </li>
+            <li class="press-item" data-company="GRU Space" data-batch="W26">
+              <a href="https://payloadspace.com/gru-space-opens-bookings-for-planned-lunar-hotel/" target="_blank">
+                <div class="press-title">GRU Space opens bookings for planned lunar hotel</div>
+                <div class="press-meta-line">
+                  <span class="press-date-source">Jan 12 · Payload</span>
+                  <span class="press-pill" onclick="filterBy('GRU Space', event)">GRU Space</span>
+                  <span class="press-pill" onclick="filterBy('W26', event)">W26</span>
+                </div>
+              </a>
+            </li>
             <li class="press-item" data-company="Corgi" data-batch="S24">
               <a href="https://www.axios.com/pro/fintech-deals/2026/01/08/startup-insurer-corgi-108-million-630-million-valuation" target="_blank">
                 <div class="press-title">Startup insurer Corgi raises $108 million at $630 million valuation</div>
@@ -376,7 +427,7 @@
       var matches = [];
 
       allItems.forEach(function(item) {
-        if (item.dataset.company === tag || item.dataset.batch === tag) {
+        if (item.dataset.company === tag || item.dataset.batch === tag || item.dataset.type === tag) {
           matches.push(item.cloneNode(true));
         }
       });
