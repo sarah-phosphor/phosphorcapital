@@ -104,6 +104,48 @@
     .press-pill.phosphor {
       opacity: 0.82;
     }
+    .press-search-wrap {
+      position: relative;
+      margin-bottom: 16px;
+      max-width: 280px;
+      margin-left: 0;
+      margin-right: auto;
+    }
+    .press-search-wrap input {
+      width: 100%;
+      padding: 8px 30px 8px 12px;
+      font-family: Jost, sans-serif;
+      font-size: 13px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 6px;
+      background: transparent;
+      color: #fff;
+      font-weight: 400;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .press-search-wrap input:focus {
+      border-color: rgba(255,255,255,0.6);
+    }
+    .press-search-wrap input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+    .press-search-clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: #999;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .press-search-clear:hover {
+      color: #333;
+    }
+    .press-item-hidden {
+      display: none !important;
+    }
     .filter-banner {
       display: flex;
       align-items: center;
@@ -223,6 +265,12 @@
       <div class="margin">
         <h2 class="heading">Press</h2>
 
+        <!-- Search bar -->
+        <div class="press-search-wrap">
+          <input id="press-search" type="text" placeholder="Search" onkeydown="if(event.key==='Enter')handlePressSearch(this.value)" />
+          <span id="press-search-clear" class="press-search-clear" onclick="clearPressSearch()" style="display:none;">&times;</span>
+        </div>
+
         <!-- Filter banner (hidden by default) -->
         <div id="filter-banner" class="filter-banner" style="display:none;">
           <span>Filtering by: <strong id="filter-label"></strong></span>
@@ -247,13 +295,33 @@
 
           <div class="press-section-label open" onclick="this.classList.toggle('open')">Recent <span class="chevron"></span></div>
           <ul class="press-list press-recent">
-            <li class="press-item" data-company="Sygaldry" data-batch="P25">
-              <a href="https://www.globenewswire.com/news-release/2026/04/14/3273436/0/en/Sygaldry-raises-139M-to-build-quantum-computers-for-AI.html" target="_blank">
-                <div class="press-title">Sygaldry raises $139M to build quantum computers for AI</div>
+            <li class="press-item" data-company="Phonely" data-batch="S24">
+              <a href="https://www.thesaasnews.com/news/phonely-lands-16-million-series-a" target="_blank">
+                <div class="press-title">Phonely lands $16 million Series A</div>
                 <div class="press-meta-line">
-                  <span class="press-date-source">Apr 14 · GlobeNewsWire</span>
+                  <span class="press-date-source">Apr 16 · The SaaS News</span>
+                  <span class="press-pill" onclick="filterBy('Phonely', event)">Phonely</span>
+                  <span class="press-pill" onclick="filterBy('S24', event)">S24</span>
+                </div>
+              </a>
+            </li>
+            <li class="press-item" data-company="Sygaldry" data-batch="P25">
+              <a href="https://thequantuminsider.com/2026/04/14/sygaldry-raises-139-million-to-build-quantum-computers-for-ai/" target="_blank">
+                <div class="press-title">Sygaldry raises $139 million to build quantum computers for AI</div>
+                <div class="press-meta-line">
+                  <span class="press-date-source">Apr 14 · The Quantum Insider</span>
                   <span class="press-pill" onclick="filterBy('Sygaldry', event)">Sygaldry</span>
                   <span class="press-pill" onclick="filterBy('P25', event)">P25</span>
+                </div>
+              </a>
+            </li>
+            <li class="press-item" data-company="Solidroad" data-batch="W25">
+              <a href="https://www.finsmes.com/2026/04/solidroad-raises-25m-in-series-a-funding.html" target="_blank">
+                <div class="press-title">Solidroad raises $25M in Series A funding</div>
+                <div class="press-meta-line">
+                  <span class="press-date-source">Apr · FinSMEs</span>
+                  <span class="press-pill" onclick="filterBy('Solidroad', event)">Solidroad</span>
+                  <span class="press-pill" onclick="filterBy('W25', event)">W25</span>
                 </div>
               </a>
             </li>
@@ -264,6 +332,36 @@
                   <span class="press-date-source">Apr 10 · NBC News</span>
                   <span class="press-pill" onclick="filterBy('Andon Labs', event)">Andon Labs</span>
                   <span class="press-pill" onclick="filterBy('W24', event)">W24</span>
+                </div>
+              </a>
+            </li>
+            <li class="press-item" data-company="Mastra" data-batch="W25">
+              <a href="https://mastra.ai/blog/series-a" target="_blank">
+                <div class="press-title">Mastra raises $22M Series A to help every developer build agents</div>
+                <div class="press-meta-line">
+                  <span class="press-date-source">Apr 9 · Mastra Blog</span>
+                  <span class="press-pill" onclick="filterBy('Mastra', event)">Mastra</span>
+                  <span class="press-pill" onclick="filterBy('W25', event)">W25</span>
+                </div>
+              </a>
+            </li>
+            <li class="press-item" data-company="Mosaic" data-batch="W25">
+              <a href="https://mosaic.so/blog/mosaic-seed-round-announcement" target="_blank">
+                <div class="press-title">Mosaic raises $3.8M to build video editing agents</div>
+                <div class="press-meta-line">
+                  <span class="press-date-source">Apr 8 · Mosaic Blog</span>
+                  <span class="press-pill" onclick="filterBy('Mosaic', event)">Mosaic</span>
+                  <span class="press-pill" onclick="filterBy('W25', event)">W25</span>
+                </div>
+              </a>
+            </li>
+            <li class="press-item" data-company="Conductor" data-batch="S24">
+              <a href="https://www.conductor.build/blog/series-a" target="_blank">
+                <div class="press-title">Conductor's Series A</div>
+                <div class="press-meta-line">
+                  <span class="press-date-source">Mar 30 · Conductor Blog</span>
+                  <span class="press-pill" onclick="filterBy('Conductor', event)">Conductor</span>
+                  <span class="press-pill" onclick="filterBy('S24', event)">S24</span>
                 </div>
               </a>
             </li>
@@ -278,10 +376,10 @@
               </a>
             </li>
             <li class="press-item" data-company="PointOne" data-batch="W24">
-              <a href="https://pointone.com/blog/pointone-raises-16-million-series-a" target="_blank">
-                <div class="press-title">PointOne raises $16 million Series A</div>
+              <a href="https://www.businessinsider.com/pointone-series-a-funding-lawyers-billable-hour-timekeeping-ai-2026-3" target="_blank">
+                <div class="press-title">PointOne raises $16M to help lawyers track billable hours with AI</div>
                 <div class="press-meta-line">
-                  <span class="press-date-source">Mar 23 · PointOne</span>
+                  <span class="press-date-source">Mar 23 · Business Insider</span>
                   <span class="press-pill" onclick="filterBy('PointOne', event)">PointOne</span>
                   <span class="press-pill" onclick="filterBy('W24', event)">W24</span>
                 </div>
@@ -637,10 +735,170 @@
     }
 
     function clearFilter() {
-      document.getElementById('default-view').style.display = 'block';
+      document.getElementById('default-view').style.display = '';
+      document.getElementById('filtered-view').style.display = 'none';
+      document.getElementById('filter-banner').style.display = 'none';
+      document.getElementById('press-search').value = '';
+      document.getElementById('press-search-clear').style.display = 'none';
+    }
+
+    // Press search — filters across company name, title, publication, and batch
+    function handlePressSearch(query) {
+      var clearBtn = document.getElementById('press-search-clear');
+      var defaultView = document.getElementById('default-view');
+      var filteredView = document.getElementById('filtered-view');
+      var banner = document.getElementById('filter-banner');
+
+      if (!query.trim()) {
+        clearPressSearch();
+        return;
+      }
+
+      clearBtn.style.display = '';
+      var q = query.toLowerCase();
+
+      // Hide the default view, show filtered view
+      defaultView.style.display = 'none';
+      filteredView.style.display = '';
+      banner.style.display = 'flex';
+      document.getElementById('filter-label').textContent = '"' + query + '"';
+
+      // Search all items
+      var allItems = defaultView.querySelectorAll('.press-item');
+      var matches = [];
+
+      allItems.forEach(function(item) {
+        var company = (item.dataset.company || '').toLowerCase();
+        var batch = (item.dataset.batch || '').toLowerCase();
+        var type = (item.dataset.type || '').toLowerCase();
+        var title = (item.querySelector('.press-title') || {}).textContent || '';
+        var dateSource = (item.querySelector('.press-date-source') || {}).textContent || '';
+
+        var searchable = [company, batch, type, title.toLowerCase(), dateSource.toLowerCase()].join(' ');
+
+        if (searchable.indexOf(q) !== -1) {
+          matches.push(item.cloneNode(true));
+        }
+      });
+
+      filteredView.innerHTML = '';
+      if (matches.length === 0) {
+        filteredView.innerHTML = '<p style="font-family:Jost,sans-serif;color:#999;padding:20px 0;">No results for "' + query + '"</p>';
+      } else {
+        matches.forEach(function(item, i) {
+          if (i === 0) item.style.borderTop = '0.75px solid #999';
+          filteredView.appendChild(item);
+        });
+        // Re-attach pill click handlers
+        filteredView.querySelectorAll('.press-pill').forEach(function(pill) {
+          pill.onclick = function(e) {
+            clearPressSearch();
+            filterBy(pill.textContent, e);
+          };
+        });
+      }
+    }
+
+    function clearPressSearch() {
+      document.getElementById('press-search').value = '';
+      document.getElementById('press-search-clear').style.display = 'none';
+      document.getElementById('default-view').style.display = '';
       document.getElementById('filtered-view').style.display = 'none';
       document.getElementById('filter-banner').style.display = 'none';
     }
+
+    // Auto-rotate: move articles older than 30 days from "Recent" into month dropdowns
+    (function() {
+      var now = new Date();
+      var thirtyDaysAgo = new Date(now.getTime() - 21 * 24 * 60 * 60 * 1000);
+      var recentList = document.querySelector('.press-recent');
+      if (!recentList) return;
+
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var monthNames = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
+
+      // Parse date from "Apr 16", "Mar 30", "Apr" etc.
+      function parseArticleDate(dateStr) {
+        var parts = dateStr.split('·')[0].trim().split(' ');
+        var monthStr = parts[0];
+        var day = parseInt(parts[1]) || 15; // default mid-month if no day
+        var monthIdx = monthNames[monthStr];
+        if (monthIdx === undefined) return null;
+        // Determine year: if month is in the future relative to current month, it's last year
+        var year = now.getFullYear();
+        if (monthIdx > now.getMonth()) year--;
+        return new Date(year, monthIdx, day);
+      }
+
+      // Collect items to move
+      var toMove = {};
+      var items = Array.from(recentList.querySelectorAll('.press-item'));
+      items.forEach(function(item) {
+        var dateSource = item.querySelector('.press-date-source');
+        if (!dateSource) return;
+        var articleDate = parseArticleDate(dateSource.textContent);
+        if (!articleDate || articleDate >= thirtyDaysAgo) return;
+
+        var monthLabel = months[articleDate.getMonth()] + ' ' + String(articleDate.getFullYear()).slice(-2);
+        if (!toMove[monthLabel]) toMove[monthLabel] = [];
+        toMove[monthLabel].push(item);
+      });
+
+      // For each month group, find or create the dropdown and move items
+      var defaultView = document.getElementById('default-view');
+      var existingToggles = defaultView.querySelectorAll('.press-toggle');
+      var existingLabels = {};
+      existingToggles.forEach(function(t) {
+        var label = t.querySelector('.press-toggle-label');
+        if (label) existingLabels[label.textContent.trim()] = t;
+      });
+
+      // Sort month keys newest first
+      var monthKeys = Object.keys(toMove).sort(function(a, b) {
+        var [am, ay] = a.split(' ');
+        var [bm, by] = b.split(' ');
+        var aDate = new Date(2000 + parseInt(ay), monthNames[am]);
+        var bDate = new Date(2000 + parseInt(by), monthNames[bm]);
+        return bDate - aDate;
+      });
+
+      monthKeys.forEach(function(monthLabel) {
+        var articles = toMove[monthLabel];
+
+        // Find existing toggle or create new one
+        var toggle = existingLabels[monthLabel];
+        var list;
+
+        if (toggle) {
+          list = toggle.nextElementSibling;
+        } else {
+          // Create new dropdown before the first existing month dropdown
+          toggle = document.createElement('div');
+          toggle.className = 'press-toggle';
+          toggle.onclick = function() { this.classList.toggle('open'); };
+          toggle.innerHTML = '<span class="press-toggle-label">' + monthLabel + '</span><span class="press-toggle-chevron"></span>';
+
+          list = document.createElement('ul');
+          list.className = 'press-list press-collapsible';
+
+          // Insert after the recent list
+          var firstExistingToggle = defaultView.querySelector('.press-toggle');
+          if (firstExistingToggle) {
+            defaultView.insertBefore(list, firstExistingToggle);
+            defaultView.insertBefore(toggle, list);
+          } else {
+            recentList.parentNode.insertBefore(toggle, recentList.nextSibling);
+            toggle.parentNode.insertBefore(list, toggle.nextSibling);
+          }
+        }
+
+        // Move articles to the top of the month's list
+        articles.forEach(function(item) {
+          item.parentNode.removeChild(item);
+          list.insertBefore(item, list.firstChild);
+        });
+      });
+    })();
   </script>
 </body>
 </html>
