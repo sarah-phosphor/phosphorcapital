@@ -375,6 +375,16 @@
                 </div>
               </a>
             </li>
+            <li class="press-item" data-company="Moritz" data-batch="W26">
+              <a href="https://www.businessinsider.com/moritz-ai-law-firm-seed-funding-y-combinator-2026-5" target="_blank">
+                <div class="press-title">Moritz raises $9M seed to build an AI-native law firm</div>
+                <div class="press-meta-line">
+                  <span class="press-date-source">May 5 · Business Insider</span>
+                  <span class="press-pill" onclick="filterBy('Moritz', event)">Moritz</span>
+                  <span class="press-pill" onclick="filterBy('W26', event)">W26</span>
+                </div>
+              </a>
+            </li>
             <li class="press-item" data-company="Yoneda Labs" data-batch="W24">
               <a href="https://www.forbes.com/councils/forbestechcouncil/2026/04/30/ai-in-chemical-discovery-why-data-generation-matters-more-than-model-architecture/" target="_blank">
                 <div class="press-title">AI in chemical discovery: why data generation matters more than model architecture</div>
@@ -952,6 +962,12 @@
         return bDate - aDate;
       });
 
+      // Capture the anchor ONCE, before the loop. monthKeys is newest-first, so
+      // inserting each new dropdown before this fixed anchor yields descending
+      // order. Re-querying inside the loop would re-anchor on the just-inserted
+      // dropdown and reverse the months (Mar/Apr/May instead of May/Apr/Mar).
+      var insertAnchor = defaultView.querySelector('.press-toggle');
+
       monthKeys.forEach(function(monthLabel) {
         var articles = toMove[monthLabel];
 
@@ -962,7 +978,7 @@
         if (toggle) {
           list = toggle.nextElementSibling;
         } else {
-          // Create new dropdown before the first existing month dropdown
+          // Create new dropdown before the first pre-existing month dropdown
           toggle = document.createElement('div');
           toggle.className = 'press-toggle';
           toggle.onclick = function() { this.classList.toggle('open'); };
@@ -971,10 +987,9 @@
           list = document.createElement('ul');
           list.className = 'press-list press-collapsible';
 
-          // Insert after the recent list
-          var firstExistingToggle = defaultView.querySelector('.press-toggle');
-          if (firstExistingToggle) {
-            defaultView.insertBefore(list, firstExistingToggle);
+          // Insert before the fixed anchor (first pre-existing toggle)
+          if (insertAnchor) {
+            defaultView.insertBefore(list, insertAnchor);
             defaultView.insertBefore(toggle, list);
           } else {
             recentList.parentNode.insertBefore(toggle, recentList.nextSibling);
