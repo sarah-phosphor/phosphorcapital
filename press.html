@@ -950,10 +950,27 @@
         return new Date(year, monthIdx, day);
       }
 
+      // Always keep at least the 3 newest articles in "Recent", even if they're
+      // older than the 3-week cutoff — otherwise Recent can look bare with just
+      // one fresh item. Protect the 3 newest by date from being moved.
+      var MIN_RECENT = 3;
+      var items = Array.from(recentList.querySelectorAll('.press-item'));
+      var protectedItems = new Set(
+        items
+          .map(function(item) {
+            var ds = item.querySelector('.press-date-source');
+            return { item: item, date: ds ? parseArticleDate(ds.textContent) : null };
+          })
+          .filter(function(entry) { return entry.date; })
+          .sort(function(a, b) { return b.date - a.date; })
+          .slice(0, MIN_RECENT)
+          .map(function(entry) { return entry.item; })
+      );
+
       // Collect items to move
       var toMove = {};
-      var items = Array.from(recentList.querySelectorAll('.press-item'));
       items.forEach(function(item) {
+        if (protectedItems.has(item)) return;
         var dateSource = item.querySelector('.press-date-source');
         if (!dateSource) return;
         var articleDate = parseArticleDate(dateSource.textContent);
